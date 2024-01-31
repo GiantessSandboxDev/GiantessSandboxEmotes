@@ -1,0 +1,954 @@
+<style>
+body
+{
+	background-color:  #414141;
+	top:               
+}
+.header
+{
+	background-color:  #D6D6D6;
+	width:             100%;
+	height:            122px;
+	position:          absolute;
+	left:              0px;
+	top:               0px;
+	background-image:  url('./EmoteViewer_LogoGts.png');
+	background-size:   contain;
+	background-repeat: no-repeat;
+	border-bottom:     solid 8px #509C58;
+}
+.headerLogoGts
+{
+	position:           relative;
+	left:               0px;
+}
+.headerLogo
+{
+	position:           absolute;
+	left:               11%;//;273px;
+	top:                8px;
+	height:             calc(100% - 40px);
+}
+.headerSubText
+{
+	font-family:        "Segoe UI Light";
+	font-style:         italic;
+	font-weight:        bold;
+	font-size:          18px;
+	position:           absolute;
+        top:                calc(100% - 52px);
+	left:               11%;
+}
+.headerSpacer
+{
+	height:             122px;
+}
+.GameVersion
+{
+	background-color: #FFF;
+	color:            #000;
+	font-family:      Segoe Print;
+	position:         absolute;
+        top:              8px;
+	right:            8px;
+	border-radius:    16px;
+	border:           solid 2px #4f9c58;
+	padding:          8px;
+}
+.box
+{
+	position:         absolute;
+	top:              17%;
+	bottom:           3%;
+	left:             1.4%;
+	right:            1.4%;
+	background-color: #3D3D3D;
+	border:           solid 4px #509C58;
+	border-radius:    4px;
+}
+button
+{
+	border-radius:    4px;
+	background-color: #FFFFFF;
+	font-family:      "Segoe UI";
+	font-weight:      bolder;
+	padding:          0px 5px 0px 5px;
+	margin:           0px;
+	font-size:        20px;
+}
+button:hover
+{
+	background-color: #FFF445;
+}
+button:active
+{
+	background-color: #B8AE0E;
+}
+select
+{
+	border-radius:    4px;
+	background-color: #FFFFFF;
+	font-family:      "Segoe UI";
+	font-weight:      bolder;
+	padding:          0px 5px 0px 5px;
+	margin:           0px;
+	font-size:        20px;
+}
+select:hover
+{
+	background-color: #FFF445;
+}
+select:active
+{
+	background-color: #B8AE0E;
+}
+.buttons
+{
+	padding: 4px;
+	width:   100%;
+	height:  4.3%;
+}
+.emoteScroll
+{
+	width:            -webkit-fill-available;
+	height:           calc(100% - 8px);
+	background-color: #FFF;
+	padding:          4px;
+	overflow-y:       scroll;
+}
+table
+{
+	width:          100%;
+	height:         100%;
+	border-spacing: 0px;
+	margin:         0px;
+	padding:        0px;
+}
+td
+{
+	padding: 0px;
+	border: solid 1px #000;
+}
+#first
+{
+	margin-top: 0px;
+}
+.myTable
+{
+	height:     auto;
+	max-height: 100%;
+	margin-top: 4px;
+}
+.myTable tr
+{
+	height: 50px;
+	margin-top: 10px;
+}
+.myTable td
+{
+	border: solid 1px #000;
+	height: 50px;
+}
+.RowPicture img
+{
+	width:  128px;
+	height: 128px;
+}
+.myTable .RowPicture
+{
+	width:            130px;
+	height:           130px;
+	text-align:       center;
+	padding:          2px;
+	border-right:     none;
+	background-color: #AAE;
+	color:            #FFF;
+}
+.myTable .RowHeader
+{
+	vertical-align:   top;
+	padding:          0px 8px 8px 8px;
+	font-family:      monospace;
+	font-size:        30px;
+	font-weight:      bold;
+	background-color: #AAE;
+	color:            #FFF;
+	border-bottom:    none;
+	border-right:     none;
+}
+.myTable .RowIndex
+{
+	vertical-align:   top;
+	text-align:       right;
+	padding:          0px 8px 8px 8px;
+	font-family:      monospace;
+	font-size:        30px;
+	font-weight:      bold;
+	background-color: #AAE;
+	color:            #FFF;
+	border-bottom:    none;
+	border-left:      none;
+}
+.myTable .RowTags
+{
+	vertical-align:   bottom;
+	padding:          8px;
+	font-family:      Arial;
+	font-size:        14px;
+	background-color: #AAE;
+	color:            #FFF;
+	height:           16px;
+	border-top:       none;
+}
+a
+{
+	text-decoration: underline;
+	color:           blue;
+	cursor:          pointer;
+}
+</style>
+<script>
+var EmoteData =
+// START CHARACTER DATA
+[
+	{
+		"name": "Kuronatu",
+		"emotes": [
+			{
+				"name": "ANGRILY_FLUSTERED_0",
+				"tags": [
+					"Angry"
+				]
+			},
+			{
+				"name": "ANGRY_0",
+				"tags": [
+					"Angry"
+				]
+			},
+			{
+				"name": "CRAZY2_0",
+				"tags": []
+			},
+			{
+				"name": "CRAZY_0",
+				"tags": []
+			},
+			{
+				"name": "DISAPPOINTED2_0",
+				"tags": [
+					"Disappointed"
+				]
+			},
+			{
+				"name": "DISAPPOINTED_0",
+				"tags": [
+					"Disappointed"
+				]
+			},
+			{
+				"name": "FLUSTERED2_0",
+				"tags": [
+					"Shy"
+				]
+			},
+			{
+				"name": "FLUSTERED_0",
+				"tags": [
+					"Shy"
+				]
+			},
+			{
+				"name": "FURIOUS_0",
+				"tags": [
+					"Angry"
+				]
+			},
+			{
+				"name": "INMOUTH_0",
+				"tags": []
+			},
+			{
+				"name": "INMOUTH_INQUIZZITIVE_0",
+				"tags": [
+					"Quizzical"
+				]
+			},
+			{
+				"name": "INTERESTED_0",
+				"tags": [
+					"Quizzical"
+				]
+			},
+			{
+				"name": "NEUTRAL_0",
+				"tags": [
+					"Neutral"
+				]
+			},
+			{
+				"name": "QUIZZICAL_0",
+				"tags": [
+					"Quizzical"
+				]
+			},
+			{
+				"name": "SLEEP_0",
+				"tags": [
+					"Sleepy"
+				]
+			},
+			{
+				"name": "SMILE_0",
+				"tags": [
+					"Happy"
+				]
+			},
+			{
+				"name": "SMUG2_0",
+				"tags": [
+					"Happy",
+					"Smug"
+				]
+			},
+			{
+				"name": "SMUG_0",
+				"tags": [
+					"Happy",
+					"Smug"
+				]
+			},
+			{
+				"name": "TEASE10_0",
+				"tags": [
+					"Horny"
+				]
+			},
+			{
+				"name": "TEASE2_0",
+				"tags": [
+					"Horny"
+				]
+			},
+			{
+				"name": "TEASE3_0",
+				"tags": [
+					"Horny"
+				]
+			},
+			{
+				"name": "TEASE4_0",
+				"tags": [
+					"Horny"
+				]
+			},
+			{
+				"name": "TEASE5_0",
+				"tags": [
+					"Horny"
+				]
+			},
+			{
+				"name": "TEASE6_0",
+				"tags": [
+					"Horny"
+				]
+			},
+			{
+				"name": "TEASE7_0",
+				"tags": [
+					"Horny"
+				]
+			},
+			{
+				"name": "TEASE8_0",
+				"tags": [
+					"Horny"
+				]
+			},
+			{
+				"name": "TEASE9_0",
+				"tags": [
+					"Horny"
+				]
+			},
+			{
+				"name": "TEASE_0",
+				"tags": [
+					"Horny"
+				]
+			},
+			{
+				"name": "UPSET_SHY_0",
+				"tags": [
+					"Sad"
+				]
+			},
+			{
+				"name": "UPSET_SHY_CRY_0",
+				"tags": [
+					"Sad"
+				]
+			},
+			{
+				"name": "_0",
+				"tags": []
+			},
+			{
+				"name": "ANGRILY_FLUSTERED_0",
+				"tags": []
+			},
+			{
+				"name": "ANGRY_0",
+				"tags": []
+			},
+			{
+				"name": "CRAZY2_0",
+				"tags": []
+			},
+			{
+				"name": "CRAZY_0",
+				"tags": []
+			},
+			{
+				"name": "DISAPPOINTED2_0",
+				"tags": []
+			},
+			{
+				"name": "DISAPPOINTED_0",
+				"tags": []
+			},
+			{
+				"name": "FLUSTERED2_0",
+				"tags": []
+			},
+			{
+				"name": "FLUSTERED_0",
+				"tags": []
+			},
+			{
+				"name": "FURIOUS_0",
+				"tags": []
+			},
+			{
+				"name": "INMOUTH_0",
+				"tags": []
+			},
+			{
+				"name": "INMOUTH_INQUIZZITIVE_0",
+				"tags": []
+			},
+			{
+				"name": "INTERESTED_0",
+				"tags": []
+			},
+			{
+				"name": "NEUTRAL_0",
+				"tags": []
+			},
+			{
+				"name": "QUIZZICAL_0",
+				"tags": []
+			},
+			{
+				"name": "SLEEP_0",
+				"tags": []
+			},
+			{
+				"name": "SMILE_0",
+				"tags": []
+			},
+			{
+				"name": "SMUG2_0",
+				"tags": []
+			},
+			{
+				"name": "SMUG_0",
+				"tags": []
+			},
+			{
+				"name": "TEASE10_0",
+				"tags": []
+			},
+			{
+				"name": "TEASE2_0",
+				"tags": []
+			},
+			{
+				"name": "TEASE3_0",
+				"tags": []
+			},
+			{
+				"name": "TEASE4_0",
+				"tags": []
+			},
+			{
+				"name": "TEASE5_0",
+				"tags": []
+			},
+			{
+				"name": "TEASE6_0",
+				"tags": []
+			},
+			{
+				"name": "TEASE7_0",
+				"tags": []
+			},
+			{
+				"name": "TEASE8_0",
+				"tags": []
+			},
+			{
+				"name": "TEASE9_0",
+				"tags": []
+			},
+			{
+				"name": "TEASE_0",
+				"tags": []
+			},
+			{
+				"name": "UPSET_SHY_0",
+				"tags": []
+			},
+			{
+				"name": "UPSET_SHY_CRY_0",
+				"tags": []
+			},
+			{
+				"name": "_0",
+				"tags": []
+			}
+		]
+	},
+	{
+		"name": "Reimu",
+		"emotes": [
+			{
+				"name": "ANGRY_0",
+				"tags": [
+					"Angry"
+				]
+			},
+			{
+				"name": "HAPPY_0",
+				"tags": [
+					"Happy"
+				]
+			},
+			{
+				"name": "HORRIFIED_0",
+				"tags": [
+					"Scared"
+				]
+			},
+			{
+				"name": "NEUTRAL_0",
+				"tags": []
+			},
+			{
+				"name": "PONDER_0",
+				"tags": [
+					"Quizzical"
+				]
+			},
+			{
+				"name": "SMILE_0",
+				"tags": [
+					"Happy"
+				]
+			},
+			{
+				"name": "WORRIED_0",
+				"tags": [
+					"Scared"
+				]
+			},
+			{
+				"name": "ANGRY_0",
+				"tags": []
+			},
+			{
+				"name": "HAPPY_0",
+				"tags": []
+			},
+			{
+				"name": "HORRIFIED_0",
+				"tags": []
+			},
+			{
+				"name": "NEUTRAL_0",
+				"tags": []
+			},
+			{
+				"name": "PONDER_0",
+				"tags": []
+			},
+			{
+				"name": "SMILE_0",
+				"tags": []
+			},
+			{
+				"name": "WORRIED_0",
+				"tags": []
+			}
+		]
+	},
+	{
+		"name": "Ayami",
+		"emotes": [
+			{
+				"name": "CONFUSED_0",
+				"tags": [
+					"Quizzical"
+				]
+			},
+			{
+				"name": "LOOK_0",
+				"tags": []
+			},
+			{
+				"name": "NEUTRAL_0",
+				"tags": []
+			},
+			{
+				"name": "SMILE2_0",
+				"tags": [
+					"Happy"
+				]
+			},
+			{
+				"name": "SMILE_0",
+				"tags": []
+			},
+			{
+				"name": "CONFUSED_0",
+				"tags": []
+			},
+			{
+				"name": "LOOK_0",
+				"tags": []
+			},
+			{
+				"name": "NEUTRAL_0",
+				"tags": []
+			},
+			{
+				"name": "SMILE2_0",
+				"tags": []
+			},
+			{
+				"name": "SMILE_0",
+				"tags": []
+			}
+		]
+	}
+]
+// END CHARACTER DATA
+;
+
+document.currentCharacter = 0;
+document.selectedTag      = null;
+document.selectCharacter  = function(CharName)
+{
+	var Buttons      = document.getElementById("buttons");
+	var OurEmoteData = null;
+	var Categories   = [];
+	
+	// Clear all buttons children
+	while (Buttons.children.length > 1)
+		Buttons.children[1].remove();
+	
+	// Loop through entire data list and find our character
+	for (var i = 0; i < EmoteData.length; i++)
+	{
+		if (EmoteData[i].name.toLowerCase() == CharName.toLowerCase())
+		{
+			// Found it!
+			OurEmoteData              = EmoteData[i];
+			document.currentCharacter = i;
+			break;
+		}
+	}
+	
+	// Safety check
+	if (OurEmoteData == null)
+		return;
+	
+	// Init categories list
+	Categories.push([ "All", OurEmoteData.emotes.length ]);
+	
+	// Get all categories
+	for (var i = 0; i < OurEmoteData.emotes.length; i++)
+	{
+		var EData = OurEmoteData.emotes[i];
+		
+		for (var j = 0; j < EData.tags.length; j++)
+		{
+			var foundIndex = Categories.findIndex((x) => x[0].toLowerCase() == EData.tags[j].toLowerCase());
+			if (foundIndex == -1)
+				Categories.push([ EData.tags[j], 1]);
+			else
+				Categories[foundIndex][1] = Categories[foundIndex][1] + 1;
+		}
+	}
+	
+	// Now we need to populate the category button list
+	for (var i = 0; i < Categories.length; i++)
+	{
+		var CatName   = Categories[i];
+		var NewButton = document.createElement("button");
+		var NewLabel  = document.createTextNode(CatName[0] + " (" + CatName[1].toString() + ")");
+		
+		NewButton.catName = CatName[0];
+		NewButton.onclick = function()
+		{
+			document.selectTag(this, this.catName);
+		};
+		
+		NewButton.appendChild(NewLabel);
+		Buttons.appendChild(NewButton);
+	}
+	
+	document.selectTag(Buttons.children[0], "All");
+};
+
+document.selectTag = function(TagButton, TagName)
+{
+	// Find TagButton
+	if (TagButton == null)
+	{
+		var TagButtons = document.getElementById("buttons");
+		for (var i = 0 ; i < TagButtons.children.length; i++)
+		{
+			if (TagButtons.children[i].catName != null && TagButtons.children[i].catName.toLowerCase() == TagName.toLowerCase())
+			{
+				TagButton = TagButtons.children[i];
+				break;
+			}
+		}
+	}
+	
+	// Get refs
+	var EmoteList   = document.getElementById("emoteData");
+	var ValidEmotes = EmoteData[document.currentCharacter].emotes;
+	
+	// Clear old emote list
+	while (EmoteList.children.length > 0)
+		EmoteList.children[0].remove();
+	
+	// Populate with new tags
+	for (var i = 0; i < ValidEmotes.length; i++)
+	{
+		var EData = ValidEmotes[i];
+		
+		// Skip mismatches
+		if (TagName != "All" && EData.tags.findIndex((x) => x == TagName) == -1)
+			continue;
+		
+		document.AddEmoteRow(EData);
+	}
+};
+
+function onCharacterChange()
+{
+	var SelectBox = document.getElementById("AllChars");
+	document.selectCharacter(SelectBox.options[SelectBox.selectedIndex].value);
+}
+
+window.onload = function()
+{
+	var AllChars = document.getElementById("AllChars");
+	
+	// Clear all character options
+	while (AllChars.children.length > 1)
+		AllChars.children[1].remove();
+	
+	// Go through entire emote data list and populate the options
+	for (var i = 0; i < EmoteData.length; i++)
+	{
+		var NewOption = document.createElement("option");
+		var NewLabel  = document.createTextNode(EmoteData[i].name);
+		
+		// Setup hierarchy
+		NewOption.appendChild(NewLabel);
+		AllChars.appendChild(NewOption);
+	}
+	
+	// Init
+	document.selectCharacter(EmoteData[0].name);
+};
+document.AddEmoteRow = function(EmoteInputData)
+{
+	var NewTable      = document.createElement("table");
+	var tr_1          = document.createElement("tr");
+	var tr_2          = document.createElement("tr");
+	var img_RowImage  = document.createElement("img");
+	var td_RowPicture = document.createElement("td");
+	var td_RowHeader  = document.createElement("td");
+	var td_RowIndex   = document.createElement("td");
+	var td_RowTags    = document.createElement("td");
+	var tn_Name       = document.createTextNode(" " + EmoteInputData.name + " ");
+	var tn_Index      = document.createTextNode("#" + (document.getElementById("emoteData").children.length + 1).toString());
+	var tn_Tags       = [ document.createElement("b") ];
+	
+	tn_Tags[0].appendChild(document.createTextNode("Tags: "));
+	
+	// Populate tags string
+	for (var i = 0; i < EmoteInputData.tags.length; i++)
+	{
+		var NewLink = document.createElement("a");
+		
+		if (i != 0)
+		{
+			var Seperator = document.createTextNode(", ");
+			tn_Tags.push(Seperator);
+		}
+		
+		// Configure the new link
+		NewLink.tagRef  = EmoteInputData.tags[i];
+		NewLink.onclick = function()
+		{
+			document.selectTag(null, this.tagRef);
+		};
+		
+		// Create the label
+		var NewLabel = document.createTextNode(EmoteInputData.tags[i]);
+		
+		// Add it
+		NewLink.appendChild(NewLabel);
+		
+		tn_Tags.push(NewLink);
+	}
+	
+	if (tn_Tags.length == 1)
+		tn_Tags.push(document.createTextNode("N/A"));
+	
+	// Configure table
+	NewTable.className = "myTable";
+	if (document.getElementById("emoteData").children.length <= 0)
+		NewTable.id = "first";
+	
+	// Configure td_RowPicture
+	td_RowPicture.className = "RowPicture";
+	td_RowPicture.rowSpan   = 2;
+	
+	// Populate img_RowImage
+	img_RowImage.src = "./EMOTES/" + EmoteData[document.currentCharacter].name + "/" + EmoteInputData.name + ".png";
+	
+	// Configure td_RowHeader
+	td_RowHeader.className = "RowHeader";
+	
+	// Configure td_RowIndex
+	td_RowIndex.className = "RowIndex";
+	
+	// Configure td_RowTags
+	td_RowTags.className = "RowTags";
+	td_RowTags.colSpan   = 2;
+	
+	// Create hierarchy
+	tr_1.appendChild(td_RowPicture);
+	tr_1.appendChild(td_RowHeader);
+	tr_1.appendChild(td_RowIndex);
+	tr_2.appendChild(td_RowTags);
+	for (var i = 0; i < tn_Tags.length; i++)
+		td_RowTags.appendChild(tn_Tags[i]);
+	
+	td_RowPicture.appendChild(img_RowImage);
+	td_RowHeader.appendChild(tn_Name);
+	td_RowIndex.appendChild(tn_Index);
+	NewTable.appendChild(tr_1);
+	NewTable.appendChild(tr_2);
+	
+	// Add it to the list
+	document.getElementById("emoteData").appendChild(NewTable);
+	/*
+					<table class="myTable" id="first">
+						<tr>
+							<td class="RowPicture" rowspan="2">
+								<img src="EMOTES/Kuronatu/_0.png" />
+							</td>
+							<td class="RowHeader">
+								_0
+							</td>
+							<td class="RowIndex">
+								#1
+							</td>
+						</tr>
+						<tr>
+							<td class="RowTags" colspan="2">
+								lol
+							</td>
+						</tr>
+					</table>
+	*/
+};
+</script>
+<div class="header">
+	<img class="headerLogo" src="./EmoteViewer_Logo.png" />
+	<p class="headerSubText">
+		Innovative Giantess Communication Solutions
+	</p>
+	<div class="GameVersion">
+		<b>Game Version:</b> v0.0.8
+	</div>
+</div>
+<div class="headerSpacer">
+&nbsp;
+</div>
+<div class="box">
+	<table style="height:100%">
+		<tr style="height:0%">
+			<td>
+				<div class="buttons" id="buttons">
+					<select id="AllChars" onchange="onCharacterChange();">
+					</select>
+					<button>
+						FMSC
+					</button>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="emoteScroll" id="emoteData">
+					<table class="myTable" id="first">
+						<tr>
+							<td class="RowPicture" rowspan="2">
+								<img src="EMOTES/Kuronatu/_0.png" />
+							</td>
+							<td class="RowHeader">
+								_0
+							</td>
+							<td class="RowIndex">
+								#1
+							</td>
+						</tr>
+						<tr>
+							<td class="RowTags" colspan="2">
+								lol
+							</td>
+						</tr>
+					</table>
+					<table class="myTable">
+						<tr>
+							<td class="RowPicture" rowspan="2">
+								<img src="EMOTES/Kuronatu/_0.png" />
+							</td>
+							<td class="RowHeader">
+								_0
+							</td>
+							<td class="RowIndex">
+								#1
+							</td>
+						</tr>
+						<tr>
+							<td class="RowTags" colspan="2">
+								lol
+							</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
