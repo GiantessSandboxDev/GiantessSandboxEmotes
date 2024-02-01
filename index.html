@@ -1,3 +1,7 @@
+<script>
+	document.gameVersion       = "v0.0.8";
+	document.websiteUpdateTime = "February 1st, 2024";
+</script>
 <style>
 body
 {
@@ -83,6 +87,25 @@ button:hover
 button:active
 {
 	background-color: #B8AE0E;
+}
+.selected
+{
+	border-radius:    4px;
+	background-color: #f99a09;
+	font-family:      "Segoe UI";
+	font-weight:      bolder;
+	padding:          0px 5px 0px 5px;
+	margin:           0px;
+	font-size:        20px;
+}
+.selected:hover
+{
+	background-color: #ffb03b;
+}
+.selected:active
+{
+	background-color: #c47f18;
+	color:            #FFFFFF;
 }
 select
 {
@@ -599,46 +622,46 @@ var EmoteData =
 			{
 				"name": "CONFUSED_0",
 				"tags": [
-					"Quizzical"
+					"Quizzical", "Unused"
 				]
 			},
 			{
 				"name": "LOOK_0",
-				"tags": []
+				"tags": ["Unused"]
 			},
 			{
 				"name": "NEUTRAL_0",
-				"tags": []
+				"tags": ["Unused"]
 			},
 			{
 				"name": "SMILE2_0",
 				"tags": [
-					"Happy"
+					"Happy", "Unused"
 				]
 			},
 			{
 				"name": "SMILE_0",
-				"tags": []
+				"tags": ["Happy", "Unused"]
 			},
 			{
 				"name": "CONFUSED_0",
-				"tags": []
+				"tags": ["Unused"]
 			},
 			{
 				"name": "LOOK_0",
-				"tags": []
+				"tags": ["Unused"]
 			},
 			{
 				"name": "NEUTRAL_0",
-				"tags": []
+				"tags": ["Unused"]
 			},
 			{
 				"name": "SMILE2_0",
-				"tags": []
+				"tags": ["Happy", "Unused"]
 			},
 			{
 				"name": "SMILE_0",
-				"tags": []
+				"tags": ["Happy", "Unused"]
 			}
 		]
 	}
@@ -709,7 +732,7 @@ document.selectCharacter  = function(CharName)
 		Buttons.appendChild(NewButton);
 	}
 	
-	document.selectTag(Buttons.children[0], "All");
+	document.selectTag(Buttons.children[1], "All");
 };
 
 document.selectTag = function(TagButton, TagName)
@@ -727,6 +750,16 @@ document.selectTag = function(TagButton, TagName)
 			}
 		}
 	}
+	
+	// Clear the classname of the old button.
+	if (document.selectedTag != null)
+		document.selectedTag.className = "";
+	
+	// Set new selected tag
+	document.selectedTag = TagButton;
+	
+	// Update tag button classname
+	document.selectedTag.className = "selected";
 	
 	// Get refs
 	var EmoteList   = document.getElementById("emoteData");
@@ -757,6 +790,28 @@ function onCharacterChange()
 
 window.onload = function()
 {
+	// Update version information
+	var GameVer  = document.getElementById("GameVersion");
+	var NewLabel = null;
+	
+	// Remove previous children
+	while (GameVer.children.length != 0)
+		GameVer.children[0].remove();
+	
+	GameVer.textContent = "";
+	NewLabel = document.createElement("b");
+	NewLabel.appendChild(document.createTextNode("Game Version: "));
+	GameVer.appendChild(NewLabel);
+	GameVer.appendChild(document.createTextNode(document.gameVersion));
+	
+	GameVer.appendChild(document.createElement("br"));
+	
+	NewLabel = document.createElement("b");
+	NewLabel.appendChild(document.createTextNode("Last Updated: "));
+	GameVer.appendChild(NewLabel);
+	GameVer.appendChild(document.createTextNode(document.websiteUpdateTime));
+	
+	// Get allchars
 	var AllChars = document.getElementById("AllChars");
 	
 	// Clear all character options
@@ -861,26 +916,6 @@ document.AddEmoteRow = function(EmoteInputData)
 	
 	// Add it to the list
 	document.getElementById("emoteData").appendChild(NewTable);
-	/*
-					<table class="myTable" id="first">
-						<tr>
-							<td class="RowPicture" rowspan="2">
-								<img src="EMOTES/Kuronatu/_0.png" />
-							</td>
-							<td class="RowHeader">
-								_0
-							</td>
-							<td class="RowIndex">
-								#1
-							</td>
-						</tr>
-						<tr>
-							<td class="RowTags" colspan="2">
-								lol
-							</td>
-						</tr>
-					</table>
-	*/
 };
 </script>
 <div class="header">
@@ -888,8 +923,10 @@ document.AddEmoteRow = function(EmoteInputData)
 	<p class="headerSubText">
 		Innovative Giantess Communication Solutions
 	</p>
-	<div class="GameVersion">
+	<div class="GameVersion" id="GameVersion">
 		<b>Game Version:</b> v0.0.8
+		<br />
+		<b>Last Updated:</b> February 1st, 2024
 	</div>
 </div>
 <div class="headerSpacer">
